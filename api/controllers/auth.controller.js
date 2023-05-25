@@ -71,24 +71,33 @@ export const login = async (req, res, next) => {
         // removing the password from user and sending the info(just otherthing other than password) 
         const { password, ...info } = user._doc;
 
-        //IMP USING COOKIES 
-        res.cookie(
-            "accessToken",
-            token,
-            // making user cookie or token can only changed using http server call , not other way
-            { httpOnly: true, }
-        )
-            .status(200)
-            .send(info);
+
+        // IMP: after deployment i found that cookies(especially httponly type) setting across different backend and frontend  domain is very risky so, no browser allow it so, dont use this
+        // //IMP USING COOKIES 
+        // res.cookie(
+        //     "accessToken",
+        //     token,
+        //     // making user cookie or token can only changed using http server call , not other way
+        //     { httpOnly: true, }
+        // )
+        //     .status(200)
+        //     .send(info);
+
+
+        // The easiest way to fix your problem would be to send back the cookie as a res object, and then setting the cookie manually in the frontend.
+        return res.status(200).json({
+            
+            userInfo: info,
+            accesstoken: token,
+          });
 
 
 
 
 
 
-
-        // Response:info
-        // res.status(200).send(info);
+        // // Response:info
+        // // res.status(200).send(info);
 
     }
 

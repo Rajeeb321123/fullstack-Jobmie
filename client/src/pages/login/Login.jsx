@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import "./Login.scss";
 import newRequest from "../../utils/newRequest";
 import { json, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie"
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -25,10 +26,14 @@ function Login() {
       // we can only store string to our local storage but we are getting object or JSON of Object( Json can only hold object or array) from our backend as response
       // so we have to stringfy the object
       // localStorage.setItem("currentUser", JSON.stringify(res.data));
-      const dataString = JSON.stringify(res.data)
+      const dataString = JSON.stringify(res.data.userInfo);
+      console.log(dataString)
       localStorage.setItem("currentUser",dataString );
 
-      navigate("/");
+      // navigate("/");
+
+      console.log(res.data.accesstoken);
+      Cookies.set('accessToken', res.data.accesstoken, );
 
       // console.log(res.data);
       // console.log(dataString)
