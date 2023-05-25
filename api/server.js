@@ -40,7 +40,7 @@ const connect = async () => {
 // MIDDLEWARE
 //cors and express to allow to take input from client side ur
 // we need credential as we are sending cookies from client to backend
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(cors({ origin: process.env.VITE_APP_URL, credentials: true }));
 app.use(express.json());
 
 app.use(cookieParser());
