@@ -1,0 +1,12 @@
+1st part:
+-frontend
+-slider: infinite-react-carousel npm
+
+
+
+2nd part:
+query and filter
+CRUD
+All MERN BASIC :              effective use of middlewares, our own created middleware also
+TantStack react-query:        useQuery, queryKey, useQueryClient, refetch(), useMutation()
+moment npm:                   to show date like 3 day ago , 2 day ago    
