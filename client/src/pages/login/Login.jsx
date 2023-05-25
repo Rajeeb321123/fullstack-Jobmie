@@ -31,13 +31,15 @@ function Login() {
       console.log(dataString)
       localStorage.setItem("currentUser",dataString );
 
-      // navigate("/");
+     
 
-      console.log(res.data.accesstoken);
+      
       Cookies.set('accessToken', res.data.accesstoken, );
 
       // console.log(res.data);
       // console.log(dataString)
+
+      navigate("/");
 
     } catch (err) {
       setError(err.response.data);
