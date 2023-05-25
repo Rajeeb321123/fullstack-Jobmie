@@ -132,7 +132,7 @@ const Gig = () => {
               <div className="user">
                 <img className='pp' src={dataUser?.img || "/img/noavatar.jpg"} alt="" />
                 <div className="info">
-                  <span>Tommy vercetti</span>
+                  <span>{data.user}</span>
                   {!isNaN(data.totalStars / data.starNumber) &&
                     <div className="stars">
                       <img src="/img/star.png" alt="" />

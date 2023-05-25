@@ -34,7 +34,7 @@ const GigCard = ({ item }) => {
               <span>{data.username}</span>
             </div>
           )}
-          <p>{item.desc}</p>
+          <p>{item.title}</p>
 
           {/* FOR OUR STARS */}
           <div className="star">
