@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import newRequest from "../../utils/newRequest";
+import Cookies from 'js-cookie';
 
 
 
@@ -48,13 +49,14 @@ const Navbar = () => {
   // changing string back to json
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
+  const accessToken = Cookies.get("accessToken");
 
   //FOR LOGOUT method
   const handleLogout = async () =>{
     try{
       
       // logout in backend will delete our coookie
-      await newRequest.post("/auth/logout");
+      await newRequest(accessToken).post("/auth/logout");
 
       localStorage.setItem("currentUser", null);
 

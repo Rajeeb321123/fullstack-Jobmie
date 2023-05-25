@@ -3,10 +3,14 @@ import React  from "react";
 import newRequest from "../../utils/newRequest";
 import Review from "../review/Review";
 import "./Reviews.scss";
+
+import Cookies from "js-cookie";
+
+
 const Reviews = ({ gigId }) => {
 
     
-    
+    const accessToken = Cookies.get("accessToken");
 
     // for updating the frontend after mutation call for writing review to backend : The useQueryClient hook returns the current QueryClient instance.
     // it uses cacheing so remember, queryKey in useQuery most be unique for each post review in Review.jsx otherwise name of user for review become same for all untill we reload the page (means no live update for review user name ): SO WE ARE USING review.userId in Review .jsx ( not here)
@@ -15,7 +19,7 @@ const Reviews = ({ gigId }) => {
     const { isLoading, error, data, refetch} = useQuery({
         queryKey: ["reviews"],
         queryFn: () =>
-            newRequest.get(`/reviews/${gigId}`).then((res) => {
+            newRequest(accessToken).get(`/reviews/${gigId}`).then((res) => {
                 return res.data;
             }),
     });
@@ -41,7 +45,7 @@ const Reviews = ({ gigId }) => {
         mutationFn: (review) => {
             
             // we are passing our review prop or IMP: review is request or req to backend
-          return newRequest.post('/reviews', review)
+          return newRequest(accessToken).post('/reviews', review)
         },
 
         // refetch or update reviews part in frontend:

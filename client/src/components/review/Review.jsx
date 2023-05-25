@@ -4,16 +4,19 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import newRequest from "../../utils/newRequest";
 import "./Review.scss";
+import Cookies from "js-cookie";
 
 
 const Review = ({ review }) => {
+
+  const accessToken = Cookies.get("accessToken");
 
   const { isLoading, error, data } = useQuery(
     {
       // useQueryClient use cache in Reviews.jsx(not here) , so Key must be unique for each review here
       queryKey: [review.userId],
       queryFn: () =>
-        newRequest.get(`/users/${review.userId}`).then((res) => {
+        newRequest(accessToken).get(`/users/${review.userId}`).then((res) => {
           return res.data;
         }),
     },

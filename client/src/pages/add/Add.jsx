@@ -5,8 +5,12 @@ import upload from "../../utils/upload";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const Add = () => {
+
+  const accessToken = Cookies.get("accessToken");
+
   // const [singleFile, setSingleFile] = useState(undefined);
   // const [files, setFiles] = useState([]);
   // const [uploading, setUploading] = useState(false);
@@ -52,7 +56,7 @@ const Add = () => {
 
   // const mutation = useMutation({
   //   mutationFn: (gig) => {
-  //     return newRequest.post("/gigs", gig);
+  //     return newRequest(accessToken).post("/gigs", gig);
   //   },
   //   onSuccess: () => {
   //     queryClient.invalidateQueries(["myGigs"]);
@@ -159,7 +163,7 @@ const Add = () => {
 
   const mutation = useMutation({
     mutationFn: (gig) => {
-      return newRequest.post("/gigs", gig);
+      return newRequest(accessToken).post("/gigs", gig);
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["myGigs"]);

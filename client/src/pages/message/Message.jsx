@@ -6,6 +6,7 @@ import { Link, useParams } from 'react-router-dom';
 import './Message.scss';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import newRequest from '../../utils/newRequest';
+import Cookies from 'js-cookie';
 
 
 const Message = () => {
@@ -14,7 +15,7 @@ const Message = () => {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   // getting the our created  custom conversation id
   const { id } = useParams();
-
+  const accessToken = Cookies.get("accessToken");
   // look at Reviews.jsx for useQueryClient description or look at tanstack react-query doc
   const queryClient = useQueryClient();
 
@@ -22,7 +23,7 @@ const Message = () => {
   const { isLoading, error, data } = useQuery({
     queryKey: ["messages"],
     queryFn: () =>
-      newRequest.get(`/messages/${id}`).then((res) => {
+      newRequest(accessToken).get(`/messages/${id}`).then((res) => {
         return res.data;
       }),
   });
@@ -34,7 +35,7 @@ const Message = () => {
     
     mutationFn: (message) => {
       
-      return newRequest.post(`/messages`,message);
+      return newRequest(accessToken).post(`/messages`,message);
     },
     onSuccess: () => {
 

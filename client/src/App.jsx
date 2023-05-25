@@ -31,6 +31,8 @@ import Pay from "./pages/pay/Pay.jsx";
 import Success from "./pages/success/Success";
 
 import './app.scss'
+import Cookies from "js-cookie";
+import axios from "axios";
 
 
 
@@ -38,6 +40,8 @@ import './app.scss'
 
 
 function App() {
+
+  
 
 
   // tanstack REACT-QUERY

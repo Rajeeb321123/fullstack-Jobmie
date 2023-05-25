@@ -11,6 +11,7 @@ import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import Reviews from '../../components/reviews/Reviews';
+import Cookies from 'js-cookie';
 
 
 import './Gig.scss';
@@ -21,14 +22,14 @@ const Gig = () => {
   const params = useParams();
   // this is Gig id when we click on gig on gigs page
   const { id } = params;
-
+  const accessToken = Cookies.get("accessToken");
 
   // REACT-QUERY: look at its doc
   // FOR GIG ID
   const { isLoading, error, data, } = useQuery({
     queryKey: ['gig'],
     queryFn: () =>
-      newRequest.get(`/gigs/single/${id}`).then((res) => {
+      newRequest(accessToken).get(`/gigs/single/${id}`).then((res) => {
         return res.data
       })
   });
@@ -44,7 +45,7 @@ const Gig = () => {
   } = useQuery({
     queryKey: ["user"],
     queryFn: () =>
-      newRequest.get(`/users/${userId}`).then((res) => {
+      newRequest(accessToken).get(`/users/${userId}`).then((res) => {
         return res.data;
       }),
 

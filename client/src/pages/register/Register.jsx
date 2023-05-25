@@ -3,6 +3,7 @@ import upload from "../../utils/upload";
 import "./Register.scss";
 import newRequest from "../../utils/newRequest";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 function Register() {
 
@@ -19,6 +20,8 @@ function Register() {
     isSeller: false,
     desc: "",
   });
+
+  const accessToken = Cookies.get("accessToken");
 
   
   const navigate = useNavigate();
@@ -47,7 +50,7 @@ function Register() {
     // IMP: UPLOAD is our own  created upload component where file is uploadig to cloudinary. then we get data and url as response
     const url = await upload(file);
     try {
-      await newRequest.post("/auth/register", {
+      await newRequest(accessToken).post("/auth/register", {
         ...user,
         img: url,
       });

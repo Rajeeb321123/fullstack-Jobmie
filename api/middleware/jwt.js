@@ -6,9 +6,14 @@ import createError from "../utils/createError.js";
 export const verifyToken = (req,res, next) => {
 
      // checking the JWT token
-     const token = req.cookies.accessToken;
+     let token =req.header("accessToken");
+ 
 
+    // checking the JWT token ( cookies can be access after deployed so use header instead)
+    //   const token = req.cookies.accessToken;
      // checking if the token exist or not
+
+
     if(!token) return next(createError(401, "You arenot Anthenticated"));
 
 

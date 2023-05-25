@@ -8,12 +8,14 @@
 import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import newRequest from "../../utils/newRequest";
+import Cookies from "js-cookie";
 
 
 const Success = () => {
 
   const { search } = useLocation();
   const navigate = useNavigate();
+  const accessToken = Cookies.get("accessToken");
 
   // getting only payment intend from Search or url 
   const params = new URLSearchParams(search);
@@ -23,7 +25,7 @@ const Success = () => {
     const makeRequest = async () => {
       try {
         // sending our payment intent 
-        const success = await newRequest.put("/orders", { payment_intent });
+        const success = await newRequest(accessToken).put("/orders", { payment_intent });
 
         console.log(success)
 

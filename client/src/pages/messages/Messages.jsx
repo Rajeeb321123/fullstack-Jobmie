@@ -9,6 +9,7 @@ import moment from "moment";
 import newRequest from "../../utils/newRequest";
 
 import "./Messages.scss";
+import Cookies from "js-cookie";
 
 const Messages = () => {
 
@@ -16,11 +17,12 @@ const Messages = () => {
 
   // look at Reviews.jsx for useQueryClient description or look at tanstack react-query doc
   const queryClient = useQueryClient();
+  const accessToken = Cookies.get("accessToken");
 
   const { isLoading, error, data } = useQuery({
     queryKey: ["conversations"],
     queryFn: () =>
-      newRequest.get(`/conversations`).then((res) => {
+      newRequest(accessToken).get(`/conversations`).then((res) => {
         return res.data;
       }),
   });
@@ -30,7 +32,7 @@ const Messages = () => {
     // id is like parameter of funcion
     mutationFn: (id) => {
       
-      return newRequest.put(`/conversations/${id}`);
+      return newRequest(accessToken).put(`/conversations/${id}`);
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["conversations"]);

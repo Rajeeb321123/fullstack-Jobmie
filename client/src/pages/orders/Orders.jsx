@@ -7,6 +7,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import newRequest from '../../utils/newRequest';
 import './Orders.scss';
+import Cookies from 'js-cookie';
 
 const Orders = () => {
 
@@ -14,6 +15,7 @@ const Orders = () => {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
   const navigate = useNavigate();
+  const accessToken = Cookies.get("accessToken");
 
 
   // REACT-QUERY: look at its doc
@@ -21,7 +23,7 @@ const Orders = () => {
   const { isLoading, error, data, refetch } = useQuery({
     queryKey: ['orders'],
     queryFn: () =>
-      newRequest.get(`/orders`).then((res) => {
+      newRequest(accessToken).get(`/orders`).then((res) => {
         return res.data
       })
   });
@@ -36,7 +38,7 @@ const Orders = () => {
     const id = sellerId + buyerId;
 
     try{
-      const res = await newRequest.get(`/conversations/single/${id}`);
+      const res = await newRequest(accessToken).get(`/conversations/single/${id}`);
       // we navigate to message page
       // id is our custom id not _id
       navigate( `/message/${res.data.id} ` )
@@ -45,7 +47,7 @@ const Orders = () => {
       // if conversation doesnot exist ye i.e error response is 404: means no conversation (our own created eror  in backend )
       if(err.response.status === 404 ){
         // we create a new conversation
-        const res = await newRequest.post(`/conversations`,{
+        const res = await newRequest(accessToken).post(`/conversations`,{
           // to is only body we send for createConversation
           to: currentUser.sellerId ? buyerId : sellerId
         });

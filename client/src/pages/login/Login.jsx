@@ -10,13 +10,14 @@ function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const accessToken = Cookies.get("accessToken");
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await newRequest.post("/auth/login", { username, password });
+      const res = await newRequest(accessToken).post("/auth/login", { username, password });
       
       // navigate("/")
 

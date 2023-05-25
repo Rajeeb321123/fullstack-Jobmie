@@ -9,19 +9,20 @@ import getCurrentUser from '../../utils/getCurrentUser';
 
 import './MyGigs.scss';
 import newRequest from '../../utils/newRequest';
+import Cookies from 'js-cookie';
 
 
 const MyGigs = () => {
 
   const currentUser = getCurrentUser();
 
-
+  const accessToken = Cookies.get("accessToken");
   const queryClient = useQueryClient();
 
   const { isLoading, error, data } = useQuery({
     queryKey: ["myGigs"],
     queryFn: () =>
-      newRequest.get(`/gigs?userId=${currentUser._id}`).then((res) => {
+      newRequest(accessToken).get(`/gigs?userId=${currentUser._id}`).then((res) => {
         return res.data;
       }),
   });
@@ -34,7 +35,7 @@ const MyGigs = () => {
 
     // this is gigId
     mutationFn:(id) => {
-      return newRequest.delete(`/gigs/${id}`);
+      return newRequest(accessToken).delete(`/gigs/${id}`);
 
     },
     onSuccess: () => {

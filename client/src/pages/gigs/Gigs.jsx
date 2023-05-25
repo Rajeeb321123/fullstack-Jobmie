@@ -10,6 +10,7 @@ import newRequest from '../../utils/newRequest';
 import './Gigs.scss';
 import { useQuery } from '@tanstack/react-query';
 import { useLocation } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 const Gigs = () => {
 
@@ -36,14 +37,14 @@ const Gigs = () => {
   const cat= params.get("cat");
 
  
-
+  const accessToken = Cookies.get("accessToken");
  
   // REACT-QUERY: look at its doc
   // refetch is amazing advantage of react query
   const { isLoading, error, data , refetch} = useQuery({
     queryKey: ['gigs'],
     queryFn: () =>
-      newRequest.get(`/gigs?cat=${cat?cat:""}&min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}&search=${querySearch === "" && searchFor!== null ?searchFor : querySearch}`).then((res) => {
+      newRequest(accessToken).get(`/gigs?cat=${cat?cat:""}&min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}&search=${querySearch === "" && searchFor!== null ?searchFor : querySearch}`).then((res) => {
         return res.data
       })
   });
