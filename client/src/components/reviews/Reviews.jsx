@@ -53,7 +53,10 @@ const Reviews = ({ gigId }) => {
         onSuccess:() => 
         // reviews is the queryKey of above Query call or useQuery
         queryClient.invalidateQueries(["reveiws"])
+        
       });
+
+      refetch();
 
     
     //   const justReRender= ()=>{

@@ -121,7 +121,7 @@ const Gigs = () => {
               
               { sort === "price" ?  
               (<span  onClick={ ()=> reSort( "createdAt" )} >Newest</span>) :
-              <span onClick={ ()=> reSort( "price" ) } >Best Selling</span>}
+              <span onClick={ ()=> reSort( "price" ) } >Best Price</span>}
             </div>)}
 
           </div>
