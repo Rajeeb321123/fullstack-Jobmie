@@ -28,7 +28,7 @@ function Login() {
       // so we have to stringfy the object
       // localStorage.setItem("currentUser", JSON.stringify(res.data));
       const dataString = JSON.stringify(res.data.userInfo);
-      console.log(dataString)
+      
       localStorage.setItem("currentUser",dataString );
 
      

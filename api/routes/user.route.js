@@ -11,6 +11,6 @@ const router = express.Router();
 // MAKING THE ENDPOINTS
 // verifyToken is middleware, if token is incorrect deleteUser willnot occur
 router.delete('/:id', verifyToken, deleteUser );
-router.get("/:id",verifyToken,getUser);
+router.get("/:id",getUser);
 
 export default router;

@@ -49,12 +49,12 @@ const Gig = () => {
         return res.data;
       }),
 
-      // enable this userQuery call only the userId exist
+    // enable this userQuery call only the userId exist
     enabled: !!userId,
   });
 
 
-  
+
 
 
 
@@ -76,7 +76,7 @@ const Gig = () => {
 
 
               <div className="user">
-                <img className='pp' src={ dataUser?.img ? dataUser.img : "/img/noavatar.jpg"} alt="" />
+                <img className='pp' src={dataUser?.img ? dataUser.img : "/img/noavatar.jpg"} alt="" />
                 <span>{dataUser.username}</span>
 
                 {/* STARS  */}
@@ -153,7 +153,7 @@ const Gig = () => {
                 <div className="items">
                   <div className="item">
                     <span className='title'>From</span>
-                    <span className="description">{dataUser?.country? dataUser.country : "No country provided by seller"}</span>
+                    <span className="description">{dataUser?.country ? dataUser.country : "No country provided by seller"}</span>
                   </div>
                   <div className="item">
                     <span className='title'>Member since</span>
@@ -173,23 +173,23 @@ const Gig = () => {
                   </div>
                   <div className="item">
                     <span className='phone'>Phone</span>
-                    <span className="description">{dataUser?.phone ? dataUser.phone: "no number"}</span>
+                    <span className="description">{dataUser?.phone ? dataUser.phone : "no number"}</span>
                   </div>
                 </div>
 
                 <hr />
 
                 {/* <p>I’m Tommy Vercetti, the boss of Vice City. I used to be a Forelli, but they screwed me over. Now I run this place. I’m tough, smart, and rich. I’ve got friends and enemies. I don’t like guys in uniform, pal. I own a lot of stuff here, and I want more. You got a problem with that?</p> */}
-                {dataUser?.desc? dataUser.desc: "No Description provided by seller"}
+                {dataUser?.desc ? dataUser.desc : "No Description provided by seller"}
 
               </div>
 
 
             </div>
-           
 
-           {/* REVIEW */}
-           <Reviews gigId={id}/>
+
+            {/* REVIEW */}
+            <Reviews gigId={id} />
           </div>
 
 
@@ -225,10 +225,19 @@ const Gig = () => {
             </div>
 
             {/* naviaget to pay page */}
-          {/* id is gig id */}
-            <Link to={`/pay/${id}`}>
-            <button>Continue</button>
-            </Link>
+            {/* id is gig id */}
+            {
+              !!accessToken ? <Link to={`/pay/${id}`}>
+                <button >Continue</button>
+              </Link>
+                :
+                (
+                  <div className='g'>
+                    Must be logged in to order
+                  </div>
+                )
+            }
+
           </div>
         </div>}
     </div>

@@ -145,7 +145,7 @@ const Add = () => {
     }
   };
 
-  console.log(state);
+ 
 
 
 

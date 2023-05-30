@@ -20,7 +20,7 @@ const upload = async (file) => {
     //for cloudinary  api endppoint looks at reference of its doc
     const res = await axios.post(import.meta.env.VITE_UPLOAD_LINK, data);
 
-    console.log(res.data)
+    
 
     // getting url from response after posting the image
     const { url } = res.data;

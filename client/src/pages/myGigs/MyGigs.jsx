@@ -27,7 +27,7 @@ const MyGigs = () => {
       }),
   });
 
-  console.log(data)
+  
 
 
 

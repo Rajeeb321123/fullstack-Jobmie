@@ -97,8 +97,8 @@ function App() {
           element: <Messages />,
         },
         {
-          path: "/message/:id",
-          element: <Message />,
+          path: "/message/:id/:recieverId",
+          element: <Message  />,
         },
         {
           path: "/add",

@@ -72,7 +72,7 @@ const Messages = () => {
                 }
                 key={c.id}
               >
-                <td><Link to={`/message/${c.id}`} className="link">{currentUser.isSeller ? c.buyerId : c.sellerId}</Link></td>
+                <td><Link to={`/message/${c.id}/${currentUser.isSeller ? c.buyerId : c.sellerId}`} className="link">{currentUser.isSeller ? c.buyerId : c.sellerId}</Link></td>
                 <td>
 
                   {/* id is custom id we created (not _id ) */}
