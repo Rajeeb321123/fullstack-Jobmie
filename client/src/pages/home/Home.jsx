@@ -197,7 +197,7 @@ const Home = () => {
               <img src="./img/check.png" alt="" />
               Manage teamwork and boost productivity with one powerful workspace
             </div>
-            <button>Explore Fiverr Business</button>
+            <button>Explore Jobmie Business</button>
           </div>
           <div className="item">
             <img
