@@ -12,7 +12,10 @@ import { useQuery } from '@tanstack/react-query';
 import { useLocation } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
-const Gigs = () => {
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const Gigs =() => {
 
     
   const [open, setOpen] = useState(false);
@@ -50,6 +53,28 @@ const Gigs = () => {
   });
 
 
+  const MySwal = withReactContent(Swal)
+
+ useEffect(() => {
+
+
+  
+    MySwal.fire({
+      icon: 'info',
+      title: 'Sorry for latency',
+      text: 'I am using free version of Render.com as web service of backend',
+      
+    })
+   
+ }, [])
+ 
+  
+
+
+  
+
+
+
 
 
 
@@ -83,6 +108,7 @@ const Gigs = () => {
 
   return (
     <div className="gigs">
+
       <div className="container">
         <span className="breadcrumbs">JOBMIE. &gt; GRAPHICS & DESIGN &gt;</span>
         <h1>AI Artists</h1>
