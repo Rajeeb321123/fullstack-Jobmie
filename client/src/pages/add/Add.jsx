@@ -126,7 +126,7 @@ const Add = () => {
           // uploading in file
           const url = await upload(file);
           return url;
-      })
+      }) 
       );
 
       // unshift will add cover image url at begining of images array
