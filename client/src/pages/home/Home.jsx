@@ -10,10 +10,31 @@ import Slide from '../../components/slide/Slide';
 import { cards, projects } from "../../data";
 import CatCard from "../../components/catCard/CatCard";
 import ProjectCard from '../../components/projectCard/ProjectCard';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 import './Home.scss';
 
 const Home = () => {
+
+
+  
+  const MySwal = withReactContent(Swal)
+
+ useEffect(() => {
+
+
+  
+    MySwal.fire({
+      icon: 'info',
+      title: 'Sorry for latency',
+      text: 'I am using free version of Render.com as web service of backend',
+      
+    })
+   
+ }, [])
+ 
+
   return (
 
 
