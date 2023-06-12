@@ -92,7 +92,7 @@
 
             button{
 
-                color: white;
+                color: red;
                 padding: 10px 20px;
                 border-radius: 5px;
                 border: 1px solid white;
@@ -100,8 +100,9 @@
                 background-color: transparent;
 
                 &:hover{
-                    background-color: #1dbf73;
-                    border-color:#1dbf73 ;
+                    background-color: black;
+                    border-color:black ;
+                   
                 }
 
 
