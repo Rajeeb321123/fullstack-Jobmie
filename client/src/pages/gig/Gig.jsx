@@ -27,7 +27,9 @@ const Gig = () => {
   // REACT-QUERY: look at its doc
   // FOR GIG ID
   const { isLoading, error, data, } = useQuery({
-    queryKey: ['gig'],
+    
+    // VERY VERY VERY IMP queryKey must be unique otherwise weird fetch errir occurs . Took me a month to solve this issue
+    queryKey: [id],
     queryFn: () =>
       newRequest(accessToken).get(`/gigs/single/${id}`).then((res) => {
         return res.data
@@ -52,6 +54,8 @@ const Gig = () => {
     // enable this userQuery call only the userId exist
     enabled: !!userId,
   });
+
+  
 
 
 
