@@ -62,7 +62,7 @@ const Gigs =() => {
     MySwal.fire({
       icon: 'info',
       title: 'Sorry for latency',
-      text: 'I am using free version of Render.com as web service of backend',
+      text: ' If you get stuck at Loading or get 404 error,It is because of free version of Render.com. Just close the tab and reload jobmie app form begining. It is the error of Render.com as Web Services on the free instance type are automatically spun down after 15 minutes of inactivity. source:https://render.com/docs/free',
       
     })
    
