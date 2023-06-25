@@ -1,6 +1,6 @@
 // NAVBAR
 
-import React  from 'react';
+import React, { useEffect }  from 'react';
 
 
 
@@ -11,12 +11,38 @@ import { cards, projects } from "../../data";
 import CatCard from "../../components/catCard/CatCard";
 import ProjectCard from '../../components/projectCard/ProjectCard';
 
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+import { useSelector } from "react-redux";
+import {useDispatch} from "react-redux";
+import { setRendercom } from '../../state';
+
 
 import './Home.scss';
 
 const Home = () => {
 
+  const rendercom = useSelector((state)=>state.global.rendercom);
+ const dispatch = useDispatch();
+  const MySwal = withReactContent(Swal)
 
+useEffect(() => {
+
+  if (rendercom === true){
+    MySwal.fire({
+      icon: 'info',
+      title: 'Sorry for latency and slow loading',
+      text: 'I am using free version of Render.com as web service of backend',
+      
+    })
+  }
+
+  return ()=>{
+
+    dispatch(setRendercom());
+  }
+    
+}, [MySwal,dispatch,rendercom])
   
 
  
