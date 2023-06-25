@@ -57,6 +57,7 @@ const Gigs =() => {
       })
   });
 
+  console.log("404 error is because of render.com free version . Please wait for some time")
 
 
   const rendercomGigs = useSelector((state)=>state.global.rendercomGigs);
@@ -73,6 +74,8 @@ const Gigs =() => {
        
      })
    }
+
+   
  
    return ()=>{
  
