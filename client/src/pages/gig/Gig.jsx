@@ -16,12 +16,6 @@ import Cookies from 'js-cookie';
 
 import './Gig.scss';
 
-// for Alert
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
-import { useSelector } from "react-redux";
-import {useDispatch} from "react-redux";
-import { setRendercomGigs } from '../../state';
 
 const Gig = () => {
 
@@ -63,27 +57,7 @@ const Gig = () => {
     enabled: !!userId,
   });
 
-  const rendercomGigs = useSelector((state)=>state.global.rendercomGigs);
-  const dispatch = useDispatch();
-   const MySwal = withReactContent(Swal)
- 
- useEffect(() => {
- 
-   if (rendercomGigs === true){
-     MySwal.fire({
-       icon: 'info',
-       title: 'Stuck in loading gigs: due free version of render.com ',
-       text: 'Web Services on the free instance type are automatically spun down after 15 minutes of inactivity. Wait for some time as web service is restarting (free instance spins up) in render.com. Try reloading if stucked of long time. source:https://render.com/docs/free',
-       
-     })
-   }
- 
-   return ()=>{
- 
-     dispatch(setRendercomGigs);
-   }
-     
- }, [MySwal,dispatch,rendercomGigs])
+
 
 
 
