@@ -13,7 +13,7 @@ import "./Slide.scss";
 
 
 
-const Slide = ({ children, slidesToShow, arrowsScroll, centerMode }) => {
+const Slide = ({ children, slidesToShow, title  }) => {
 
   const settings = {
     className: "center",
@@ -27,6 +27,7 @@ const Slide = ({ children, slidesToShow, arrowsScroll, centerMode }) => {
   return (
     <div className="slide">
       <div className="container" >
+        <dvi className="title1">{title}</dvi>
         <Slider
           {...settings}
         >

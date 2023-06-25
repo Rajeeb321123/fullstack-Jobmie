@@ -80,10 +80,8 @@ const Navbar = () => {
         <span className="dot">.</span>
       </div>
       <div className="links">
-        <span>Jobmie Business</span>
-        <span>Explore</span>
-        <span>English</span>
-        {!currentUser?.isSeller && <span>Become a Seller</span>}
+       
+        
         {currentUser ? (
           <div className="user" onClick={() => setOpen(!open)}>
             <img src={currentUser.img || "/img/noavatar.jpg"} alt="" />

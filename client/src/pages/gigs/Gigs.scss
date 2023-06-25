@@ -157,8 +157,13 @@
 
         .cards{
             display: flex;
+            perspective: 1px;
             flex-wrap: wrap;
-            justify-content: space-between;
+            justify-content: flex-start;
+            gap: 10px;
+            margin: 2px;
+            padding: 10px;
+            
             
         }
 

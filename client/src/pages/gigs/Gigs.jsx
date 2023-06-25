@@ -3,7 +3,6 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 
-import {gigs} from '../../data'
 import GigCard from '../../components/gigCard/GigCard';
 import newRequest from '../../utils/newRequest';
 
@@ -12,8 +11,6 @@ import { useQuery } from '@tanstack/react-query';
 import { useLocation } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
 
 const Gigs =() => {
 
@@ -53,20 +50,7 @@ const Gigs =() => {
   });
 
 
-  const MySwal = withReactContent(Swal)
 
- useEffect(() => {
-
-
-  
-    MySwal.fire({
-      icon: 'info',
-      title: 'Sorry for latency',
-      text: ' If you get stuck at Loading or get 404 error,It is because of free version of Render.com. Just close the tab and reload jobmie app form begining. It is the error of Render.com as Web Services on the free instance type are automatically spun down after 15 minutes of inactivity. source:https://render.com/docs/free',
-      
-    })
-   
- }, [])
  
   
 

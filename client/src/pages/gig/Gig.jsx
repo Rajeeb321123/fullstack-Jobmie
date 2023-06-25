@@ -128,7 +128,7 @@ const Gig = () => {
 
             <h2>About This Gig</h2>
 
-            {/* <p>I am an AI artist who uses Midjourney to create realistic portraits of people based on my preferences and feedback. I have a degree in computer science and art, and I have been working as an AI artist for two years. I want to showcase my AI art to a wider audience and collaborate with other artists and clients. You can see some of my work on my website or on the Midjourney Discord server. I am always open to new challenges and opportunities to learn and grow as an AI artist.</p> */}
+         
             <p>
               {data.desc}
             </p>
@@ -183,7 +183,7 @@ const Gig = () => {
 
                 <hr />
 
-                {/* <p>I’m Tommy Vercetti, the boss of Vice City. I used to be a Forelli, but they screwed me over. Now I run this place. I’m tough, smart, and rich. I’ve got friends and enemies. I don’t like guys in uniform, pal. I own a lot of stuff here, and I want more. You got a problem with that?</p> */}
+            
                 {dataUser?.desc ? dataUser.desc : "No Description provided by seller"}
 
               </div>
@@ -237,7 +237,7 @@ const Gig = () => {
                 :
                 (
                   <div className='g'>
-                    Must be logged in to order
+                    Log In for Stripe payment order
                   </div>
                 )
             }

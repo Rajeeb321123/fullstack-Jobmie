@@ -1,6 +1,6 @@
 // NAVBAR
 
-import React , {useEffect} from 'react';
+import React  from 'react';
 
 
 
@@ -10,8 +10,7 @@ import Slide from '../../components/slide/Slide';
 import { cards, projects } from "../../data";
 import CatCard from "../../components/catCard/CatCard";
 import ProjectCard from '../../components/projectCard/ProjectCard';
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+
 
 import './Home.scss';
 
@@ -19,20 +18,7 @@ const Home = () => {
 
 
   
-  const MySwal = withReactContent(Swal)
 
- useEffect(() => {
-
-
-  
-    MySwal.fire({
-      icon: 'info',
-      title: 'Sorry for latency',
-      text: 'I am using free version of Render.com as web service of backend',
-      
-    })
-   
- }, [])
  
 
   return (
@@ -43,7 +29,7 @@ const Home = () => {
       <TrustedBy />
 
       {/* SLIDER */}
-      <Slide slidesToShow={5} arrowsScroll={5}> 
+      <Slide slidesToShow={5} arrowsScroll={5} title='Categories'> 
         {cards.map((card)=>(
           <CatCard key={card.id} item={card} />
 
@@ -230,7 +216,7 @@ const Home = () => {
       </div>
 
       {/* SLIDER */}
-      <Slide slidesToShow={4} arrowsScroll={4}>
+      <Slide slidesToShow={4} arrowsScroll={4} title= 'Artists'>
         {projects.map((project) => (
           <ProjectCard key={project.id} card={project} />
         ))}
