@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   
-    rendercom: true
+    rendercom: true,
+    rendercomGigs: true,
 };
 
 export const globalSlice = createSlice({
@@ -21,6 +22,9 @@ export const globalSlice = createSlice({
             state.rendercom = false
         },
 
+        setRendercomGigs:(state) => {
+            state.rendercomGigs = false
+        }
 
 
     }
